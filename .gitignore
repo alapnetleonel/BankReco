@@ -1,0 +1,38 @@
+
+# Environnement Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Versions de sauvegarde
+app1.py
+app3.py
+app_sauvegarde*.py
+
+# Fichiers temporaires
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Secrets et configurations locales
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+# Archives originales Santander
+data/train_ver2.csv.zip
+data/test_ver2.csv.zip
+data/sample_submission.csv.zip
+
+# Fichiers de sauvegarde
+app1.py
+app3.py
+app_sauvegarde*.py
+
+# Ancienne version du notebook de modélisation
+/notebooks/03_modelisation.ipynb

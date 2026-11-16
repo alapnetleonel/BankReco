@@ -1,0 +1,8 @@
+# Versions observees lors du demarrage et des cinq tests de BankReco (15-11-2026).
+# Environnement Windows, Python 3.14. Verifier la compatibilite des modeles joblib
+# lors d'une installation sur un autre ordinateur.
+streamlit==1.67.0
+pandas==3.1.1
+numpy==2.5.4
+scikit-learn==1.9.1
+joblib==1.6.0
