@@ -1,155 +1,169 @@
-# Ã°Å¸ÂÂ¦ BankReco Ã¢â‚¬â€ Recommandation personnalisÃƒÂ©e de produits bancaires
+# 🏦 BankReco — Système de recommandation de produits bancaires
 
-**Projet de session INF-5103 Ã¢â‚¬â€ Concepts statistiques pour la science des donnÃƒÂ©es**
-UniversitÃƒÂ© du QuÃƒÂ©bec en Outaouais (UQO) Ã‚Â· Automne 2026
+**Projet de session INF-5103 — Concepts statistiques pour la science des données**  
+**Université du Québec en Outaouais (UQO) — Automne 2026**  
 **Auteur :** Leonel
 
-## PrÃƒÂ©sentation
+## 1. Présentation
 
-**BankReco** est une application Python avec interface graphique **Streamlit** qui exploite l'historique des produits bancaires pour recommander ÃƒÂ  un client jusqu'ÃƒÂ  **trois produits qu'il pourrait acquÃƒÂ©rir le mois suivant**. L'outil s'adresse, ÃƒÂ  titre de client reprÃƒÂ©sentatif, ÃƒÂ  un responsable du marketing et de la relation clientÃƒÂ¨le d'une banque de dÃƒÂ©tail. Il constitue une dÃƒÂ©monstration acadÃƒÂ©mique et non un outil officiel de Santander.
+**BankReco** est une application académique Python/Streamlit qui propose jusqu'à **trois produits bancaires** qu'un client pourrait acquérir le mois suivant, à partir de son profil et de son historique de détention. Le destinataire représentatif est un responsable du marketing et de la relation clientèle d'une banque de détail. BankReco n'est pas un service officiel de Santander et ne constitue pas un outil de décision bancaire en production.
 
-L'application permet de consulter les produits dÃƒÂ©tenus, l'ÃƒÂ©volution du portefeuille d'un client, les recommandations personnalisÃƒÂ©es, les prÃƒÂ©visions de juin 2016 et les indicateurs d'ÃƒÂ©valuation du systÃƒÂ¨me.
+L'application comprend trois pages :
 
-## Lancer l'application Ã¢â‚¬â€ commande unique
+- **Recommandations** : sélection d'un client et d'un mois, produits détenus, Top 3 personnalisé, probabilités estimées, évolution du portefeuille, acquisitions/abandons et matrice mensuelle.
+- **Prévisions juin 2016** : recommandations calculées à partir des profils de mai 2016, consultation par client, graphiques, tableau et export CSV.
+- **Tableau de bord** : indicateurs d'évaluation sur avril–mai 2016, comparaison à une méthode fondée sur la popularité et intervalle de confiance bootstrap exploratoire.
 
-**Depuis le rÃƒÂ©pertoire racine du projet**, aprÃƒÂ¨s avoir installÃƒÂ© les dÃƒÂ©pendances et vÃƒÂ©rifiÃƒÂ© la prÃƒÂ©sence des fichiers de donnÃƒÂ©es et des modÃƒÂ¨les :
+## 2. Lancement en une commande
+
+**Une fois Python, les dépendances et les fichiers requis installés**, ouvrir un terminal dans le dossier racine `BankReco` avec le bon environnement Python activé, puis exécuter :
 
 ```powershell
 python -m streamlit run app.py
 ```
 
-Streamlit affiche normalement une adresse locale, gÃƒÂ©nÃƒÂ©ralement `http://localhost:8501`, ÃƒÂ  ouvrir dans un navigateur. Pour arrÃƒÂªter le serveur, utiliser `Ctrl+C` dans le terminal.
+Ouvrir l'adresse locale affichée par Streamlit (généralement <http://localhost:8501>). Arrêter le serveur avec `Ctrl+C`.
 
-> **Important :** la commande ci-dessus lance l'application ; elle n'installe pas automatiquement Python, les bibliothÃƒÂ¨ques ni les modÃƒÂ¨les. La section suivante explique la prÃƒÂ©paration initiale.
+> Cette commande lance l'application ; la préparation initiale d'un nouvel ordinateur est décrite ci-dessous.
 
-## PrÃƒÂ©requis et installation initiale (Windows PowerShell)
+## 3. Installation initiale sur Windows PowerShell
 
-- Python et un environnement disposant de `streamlit`, `pandas`, `numpy`, `scikit-learn` et `joblib` ;
-- le fichier `app.py`, le jeu de donnÃƒÂ©es et les modÃƒÂ¨les entraÃƒÂ®nÃƒÂ©s aux emplacements indiquÃƒÂ©s ci-dessous ;
-- un terminal ouvert dans le dossier racine du projet.
+### Prérequis
 
-Exemple avec **Anaconda** et l'environnement utilisÃƒÂ© pendant le dÃƒÂ©veloppement :
+- Windows avec **Python 3.14** installé (version validée : **3.14.6**) et accessible par `py -3.14` ;
+- connexion Internet pour l'installation initiale des dépendances ;
+- fichiers de données, de prévisions et modèles aux emplacements indiqués à la section 4.
+
+Ouvrir PowerShell dans le dossier `BankReco` téléchargé ou cloné, puis exécuter :
 
 ```powershell
-conda activate ml-project
-cd C:\Users\alapn\PythonProjects\BankReco
-python -m pip install streamlit pandas numpy scikit-learn joblib
+py -3.14 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe verification_bankreco.py
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+Ces commandes utilisent directement Python dans `.venv` : **Conda n'est pas nécessaire**. Pour utiliser ensuite la commande unique de la section 2, activer l'environnement dans un terminal autorisant l'activation :
+
+```powershell
+.\.venv\Scripts\Activate.ps1
 python -m streamlit run app.py
 ```
 
-Le chemin `C:\Users\alapn\PythonProjects\BankReco` est propre ÃƒÂ  l'ordinateur de dÃƒÂ©veloppement : **remplacez-le par le chemin rÃƒÂ©el du dossier tÃƒÂ©lÃƒÂ©chargÃƒÂ©**. Si les dÃƒÂ©pendances sont dÃƒÂ©jÃƒÂ  installÃƒÂ©es, seule la commande de lancement est nÃƒÂ©cessaire aprÃƒÂ¨s activation de l'environnement et positionnement dans le dossier du projet.
+Si la politique PowerShell empêche l'activation, utiliser sans la modifier :
 
-**CompatibilitÃƒÂ© :** les modÃƒÂ¨les sÃƒÂ©rialisÃƒÂ©s avec `joblib` peuvent nÃƒÂ©cessiter des versions de `scikit-learn` compatibles avec celles utilisÃƒÂ©es pour leur entraÃƒÂ®nement. Pour une reproduction fiable, publier un fichier `requirements.txt` avec les versions testÃƒÂ©es ou un fichier d'environnement Conda.
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
 
-## Organisation du dÃƒÂ©pÃƒÂ´t
+Les versions directes épinglées dans `requirements.txt`, testées sur Windows/Python 3.14, sont :
+
+| Bibliothèque | Version |
+|---|---:|
+| Streamlit | 1.67.0 |
+| pandas | 3.1.1 |
+| NumPy | 2.5.4 |
+| scikit-learn | **1.9.1** |
+| joblib | 1.6.0 |
+
+**Compatibilité des modèles :** les fichiers `.joblib` ont été enregistrés avec scikit-learn **1.9.1**. Une autre version peut produire des avertissements ou des résultats incompatibles. Ne charger que des fichiers `.joblib` provenant d'une source de confiance.
+
+## 4. Structure du projet
 
 ```text
 BankReco/
-Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ app.py
-Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ README.md
-Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ data/
-Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ santander_echantillon.csv
-Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ modeles/
-Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ modeles_bankreco.joblib
-Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ variables_X.joblib
-Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ noms_produits.joblib
-Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ resultats/
-Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ predictions_juin_2016.csv
-Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ notebooks/
-    Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ 03_modelisation.ipynb
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── verification_bankreco.py
+├── app.py
+├── 03_modelisation.ipynb             # Notebook principal à publier
+├── notebooks/
+│   ├── 01_exploration_donnees.ipynb
+│   └── 02_preparation_donnees.ipynb
+├── data/
+│   └── santander_echantillon.csv     # Requis ; pas encore inclus dans Git
+├── modeles/
+│   ├── modeles_bankreco.joblib
+│   ├── variables_X.joblib
+│   └── noms_produits.joblib
+└── resultats/
+    └── predictions_juin_2016.csv
 ```
 
-Cette arborescence prÃƒÂ©sente les **fichiers nÃƒÂ©cessaires ou utilisÃƒÂ©s dans le dÃƒÂ©veloppement**. VÃƒÂ©rifiez que les noms correspondent aux fichiers rÃƒÂ©ellement prÃƒÂ©sents dans le dÃƒÂ©pÃƒÂ´t avant publication. Le notebook sert ÃƒÂ  documenter les expÃƒÂ©rimentations ; l'application charge directement les fichiers `joblib` et le CSV.
+Les archives originales `train_ver2.csv.zip`, `test_ver2.csv.zip` et `sample_submission.csv.zip`, le dossier `.venv`, les caches et les copies de sauvegarde du programme sont exclus du dépôt.
 
-> **DonnÃƒÂ©es et taille du dÃƒÂ©pÃƒÂ´t :** le fichier `santander_echantillon.csv` reprÃƒÂ©sente environ 46 Mo dans l'environnement de dÃƒÂ©veloppement. VÃƒÂ©rifiez les rÃƒÂ¨gles de redistribution des donnÃƒÂ©es et la taille des fichiers avant leur publication. Si un fichier n'est pas inclus dans GitHub, indiquez prÃƒÂ©cisÃƒÂ©ment comment l'obtenir et oÃƒÂ¹ le placer ; sinon, la commande de lancement ne suffira pas ÃƒÂ  reproduire l'application.
+### Important : disponibilité des données
 
-## FonctionnalitÃƒÂ©s
+L'application lit obligatoirement `data/santander_echantillon.csv` (environ **46,41 Mo**). **Ce fichier n'est pas présent dans le premier commit Git** ; cloner le dépôt ne suffit donc pas, à ce stade, pour exécuter BankReco. Avant toute publication publique, il faut vérifier les droits de redistribution et l'absence d'informations confidentielles. Si la redistribution n'est pas permise, fournir une procédure reproductible de préparation de l'échantillon à partir de la source autorisée, avec les paramètres et éventuelles graines aléatoires utilisés. Ne pas inventer une URL de téléchargement de l'échantillon.
 
-### 1. Recommandations
+Le script `verification_bankreco.py` vérifie la présence des fichiers et affiche les versions installées. **Il ne vérifie pas à lui seul les prédictions ni l'exactitude statistique des résultats.**
 
-- SÃƒÂ©lection d'un client et d'un mois d'observation ;
-- affichage du profil et des produits dÃƒÂ©jÃƒÂ  dÃƒÂ©tenus ;
-- gÃƒÂ©nÃƒÂ©ration d'un **Top 3** de produits admissibles avec probabilitÃƒÂ©s estimÃƒÂ©es ;
-- visualisation de l'ÃƒÂ©volution mensuelle du nombre de produits ;
-- consultation des acquisitions et abandons observÃƒÂ©s et de la matrice de dÃƒÂ©tention des produits.
+## 5. Données et méthode statistique
 
-### 2. PrÃƒÂ©visions juin 2016
+**Source :** jeu de données [Santander Product Recommendation (Kaggle)](https://www.kaggle.com/competitions/santander-product-recommendation).
 
-- Consultation des prÃƒÂ©visions ÃƒÂ©tablies ÃƒÂ  partir des profils de mai 2016 ;
-- sÃƒÂ©lection d'un client pour afficher ses recommandations et scores ;
-- visualisation de la rÃƒÂ©partition du nombre de recommandations ;
-- consultation et exportation des prÃƒÂ©visions en CSV.
+L'échantillon de travail comprend **285 734 observations**, **20 000 clients**, **17 mois** (janvier 2015 à mai 2016) et **24 indicateurs de détention de produits**.
 
-**Attention :** les acquisitions rÃƒÂ©elles de juin 2016 ne figurent pas dans l'ÃƒÂ©chantillon utilisÃƒÂ© ; les prÃƒÂ©visions de juin ne peuvent donc pas ÃƒÂªtre ÃƒÂ©valuÃƒÂ©es directement.
+Sept produits sont modélisés : prélèvements automatiques, domiciliation de pension, domiciliation de salaire, compte courant, carte de crédit, compte de paie et E-account.
 
-### 3. Tableau de bord
+BankReco utilise **sept modèles de régression logistique calibrés**, un par produit, pour estimer l'acquisition au mois suivant. Les variables comprennent des caractéristiques des clients et leurs produits détenus. Les produits déjà détenus ou dont le statut est inconnu sont exclus du classement.
 
-- PrÃƒÂ©sentation des performances mesurÃƒÂ©es sur avrilÃ¢â‚¬â€œmai 2016 ;
-- comparaison ÃƒÂ  une mÃƒÂ©thode de recommandation fondÃƒÂ©e sur la popularitÃƒÂ© ;
-- prÃƒÂ©sentation d'une analyse bootstrap exploratoire du gain de rappel.
+Le découpage est temporel : entraînement sur **2015**, calibration sur **janvier–février 2016** et évaluation sur les mois ultérieurs. Les résultats du tableau de bord concernent **avril–mai 2016**. Le notebook `03_modelisation.ipynb` documente la démarche de modélisation.
 
-## DonnÃƒÂ©es et mÃƒÂ©thodes
+## 6. Résultats expérimentaux
 
-**Source :** jeu de donnÃƒÂ©es *Santander Product Recommendation* (Kaggle). L'ÃƒÂ©chantillon de travail comporte **285 734 observations**, **20 000 clients**, **17 mois** (janvier 2015 ÃƒÂ  mai 2016) et **24 indicateurs de produits bancaires**.
-
-Sept produits sont modÃƒÂ©lisÃƒÂ©s : prÃƒÂ©lÃƒÂ¨vements automatiques, domiciliation de pension, domiciliation de salaire, compte courant, carte de crÃƒÂ©dit, compte de paie et E-account.
-
-Le systÃƒÂ¨me utilise **sept modÃƒÂ¨les de rÃƒÂ©gression logistique calibrÃƒÂ©s**, un par produit. Les variables d'entrÃƒÂ©e comprennent des caractÃƒÂ©ristiques client et l'ÃƒÂ©tat de dÃƒÂ©tention des produits. Pour chaque client, le systÃƒÂ¨me exclut les produits dÃƒÂ©jÃƒÂ  dÃƒÂ©tenus ou de statut inconnu, puis classe les produits restants selon leur score d'acquisition estimÃƒÂ©.
-
-**DÃƒÂ©coupage temporel :** entraÃƒÂ®nement sur 2015, calibration sur janvierÃ¢â‚¬â€œfÃƒÂ©vrier 2016, puis ÃƒÂ©valuation sur les pÃƒÂ©riodes ultÃƒÂ©rieures. Les rÃƒÂ©sultats prÃƒÂ©sentÃƒÂ©s ci-dessous portent sur avrilÃ¢â‚¬â€œmai 2016.
-
-## RÃƒÂ©sultats expÃƒÂ©rimentaux
-
-| Indicateur | BankReco | PopularitÃƒÂ© |
+| Indicateur | BankReco | Popularité |
 |---|---:|---:|
-| PrÃƒÂ©cision globale@3 | 1,115 % | 0,987 % |
+| Précision globale@3 | 1,115 % | 0,987 % |
 | Rappel global@3 | 90,50 % | 80,14 % |
 | Hit Rate@3 | 95,29 % | 85,16 % |
 
-L'ÃƒÂ©valuation porte sur **38 701 observations client-mois**, **19 411 clients distincts** et **1 410 acquisitions ÃƒÂ©valuables**. Le systÃƒÂ¨me a produit **114 445 recommandations**, dont **1 276 correspondances avec des acquisitions**.
+L'évaluation porte sur **38 701 observations client-mois**, **19 411 clients distincts** et **1 410 acquisitions évaluables**. Sur **114 445 recommandations**, **1 276** correspondent à des acquisitions observées.
 
-Le gain observÃƒÂ© de rappel global@3 par rapport ÃƒÂ  la popularitÃƒÂ© est d'environ **10,35 points de pourcentage**. Un bootstrap exploratoire de 2 000 rÃƒÂ©ÃƒÂ©chantillonnages a produit un intervalle de confiance ÃƒÂ  95 % de **[8,459 ; 12,343] points**.
+Le gain observé de rappel global@3 par rapport à la popularité est d'environ **10,35 points de pourcentage**. Un bootstrap exploratoire de **2 000 rééchantillonnages** donne un intervalle de confiance à 95 % de **[8,459 ; 12,343] points**. Ces résultats historiques ne garantissent pas la performance future ; la précision reste faible.
 
-La prÃƒÂ©cision reste faible : il faut donc ÃƒÂ©viter de prÃƒÂ©senter chaque recommandation comme une acquisition probable ou certaine.
+## 7. Prévisions pour juin 2016
 
-## PrÃƒÂ©visions pour juin 2016
+À partir des profils de mai 2016, le fichier `resultats/predictions_juin_2016.csv` contient **57 591 recommandations** pour **19 447 clients**.
 
-Ãƒâ‚¬ partir des profils de mai 2016, l'application dispose de **57 591 recommandations** pour **19 447 clients** :
-
-| Recommandations par client | Nombre de clients |
+| Nombre de recommandations | Nombre de clients |
 |---|---:|
 | 0 | 24 |
 | 1 | 164 |
 | 2 | 350 |
 | 3 | 18 909 |
 
-Les scores enregistrÃƒÂ©s dans le fichier CSV sont des probabilitÃƒÂ©s sur l'ÃƒÂ©chelle **0 ÃƒÂ  1** ; ils sont multipliÃƒÂ©s par 100 pour un affichage en pourcentage.
+Les probabilités du CSV sont enregistrées entre **0 et 1** et converties en pourcentages dans l'interface. Les acquisitions réelles de juin 2016 ne sont pas disponibles dans cet échantillon : **aucune performance réelle de juin ne peut être calculée**.
 
-## VÃƒÂ©rification rapide aprÃƒÂ¨s lancement
+## 8. Vérification de fonctionnement
 
-1. Ouvrir la page **Recommandations**, choisir un client et un mois, puis cliquer sur **GÃƒÂ©nÃƒÂ©rer les recommandations**.
-2. VÃƒÂ©rifier que les produits dÃƒÂ©jÃƒÂ  dÃƒÂ©tenus ne sont pas recommandÃƒÂ©s et que trois produits au maximum sont affichÃƒÂ©s.
-3. Ouvrir **PrÃƒÂ©visions juin 2016**, sÃƒÂ©lectionner un client et vÃƒÂ©rifier l'affichage des recommandations.
-4. Ouvrir **Tableau de bord** et vÃƒÂ©rifier la prÃƒÂ©sence des indicateurs d'ÃƒÂ©valuation.
+1. Lancer `verification_bankreco.py` et vérifier que les fichiers requis sont présents.
+2. Lancer Streamlit ; ouvrir **Recommandations**, choisir un client et un mois, puis cliquer sur **Générer les recommandations**.
+3. Vérifier que les produits détenus sont exclus et que le Top 3 contient au plus trois produits.
+4. Consulter l'historique, les acquisitions/abandons et la matrice mensuelle.
+5. Ouvrir **Prévisions juin 2016**, afficher les prévisions d'un client et tester l'export CSV.
+6. Ouvrir **Tableau de bord** et vérifier l'affichage des indicateurs.
 
-Si l'application ne dÃƒÂ©marre pas, vÃƒÂ©rifier le rÃƒÂ©pertoire courant, les bibliothÃƒÂ¨ques installÃƒÂ©es et la prÃƒÂ©sence des fichiers mentionnÃƒÂ©s dans l'arborescence.
+L'installation des dépendances, le chargement des **sept modèles** et le démarrage de Streamlit ont été validés sous Windows/Python 3.14.6 dans un environnement virtuel neuf. Cela **ne remplace pas** un essai de clonage et d'exécution sur un autre ordinateur.
 
-## Limites
+## 9. Limites et précautions
 
-- Ãƒâ€°chantillon limitÃƒÂ© ÃƒÂ  20 000 clients et ÃƒÂ  sept produits modÃƒÂ©lisÃƒÂ©s ;
-- acquisitions rares et prÃƒÂ©cision@3 faible ;
-- performances historiques qui ne garantissent pas les rÃƒÂ©sultats futurs ;
-- prÃƒÂ©visions de juin 2016 non vÃƒÂ©rifiables sans donnÃƒÂ©es rÃƒÂ©elles correspondantes ;
-- outil acadÃƒÂ©mique ne tenant pas lieu de validation rÃƒÂ©glementaire ou commerciale.
+- Échantillon de 20 000 clients et seulement sept produits modélisés parmi 24 indicateurs ;
+- événements d'acquisition rares et précision@3 faible ;
+- généralisation à d'autres périodes ou banques non démontrée ;
+- absence de données réelles de juin 2016 pour valider les prévisions correspondantes ;
+- nécessité de contrôler les droits de redistribution des données et les informations éventuellement présentes dans les notebooks et exports ;
+- application académique, sans validation réglementaire ou déploiement en production.
 
-## RÃƒÂ©fÃƒÂ©rences
+## 10. Références
 
-- [Kaggle Ã¢â‚¬â€ Santander Product Recommendation](https://www.kaggle.com/competitions/santander-product-recommendation)
-- [Documentation Streamlit](https://docs.streamlit.io/)
-- [Documentation scikit-learn](https://scikit-learn.org/stable/)
+- [Kaggle — Santander Product Recommendation](https://www.kaggle.com/competitions/santander-product-recommendation)
+- [Streamlit — Documentation](https://docs.streamlit.io/)
+- [scikit-learn — Documentation](https://scikit-learn.org/stable/)
 
-## Licence et publication
+## 11. Licence et publication
 
-Aucune licence logicielle n'est dÃƒÂ©finie ici. Ajouter une licence uniquement aprÃƒÂ¨s avoir choisi ses conditions et vÃƒÂ©rifiÃƒÂ© les droits de redistribution des fichiers inclus.
+Aucune licence logicielle n'est encore définie. Le dépôt public et la redistribution des données devront respecter les droits applicables. **Lien GitHub : à compléter après création du dépôt.**
 
-**Projet pÃƒÂ©dagogique INF-5103 Ã¢â‚¬â€ UQO, automne 2026.**
+*Projet pédagogique INF-5103 — UQO, automne 2026.*
