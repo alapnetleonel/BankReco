@@ -1,34 +1,34 @@
-# ðŸ¦ BankReco â€” Recommandation personnalisÃ©e de produits bancaires
+# Ã°Å¸ÂÂ¦ BankReco Ã¢â‚¬â€ Recommandation personnalisÃƒÂ©e de produits bancaires
 
-**Projet de session INF-5103 â€” Concepts statistiques pour la science des donnÃ©es**
-UniversitÃ© du QuÃ©bec en Outaouais (UQO) Â· Automne 2026
+**Projet de session INF-5103 Ã¢â‚¬â€ Concepts statistiques pour la science des donnÃƒÂ©es**
+UniversitÃƒÂ© du QuÃƒÂ©bec en Outaouais (UQO) Ã‚Â· Automne 2026
 **Auteur :** Leonel
 
-## PrÃ©sentation
+## PrÃƒÂ©sentation
 
-**BankReco** est une application Python avec interface graphique **Streamlit** qui exploite l'historique des produits bancaires pour recommander Ã  un client jusqu'Ã  **trois produits qu'il pourrait acquÃ©rir le mois suivant**. L'outil s'adresse, Ã  titre de client reprÃ©sentatif, Ã  un responsable du marketing et de la relation clientÃ¨le d'une banque de dÃ©tail. Il constitue une dÃ©monstration acadÃ©mique et non un outil officiel de Santander.
+**BankReco** est une application Python avec interface graphique **Streamlit** qui exploite l'historique des produits bancaires pour recommander ÃƒÂ  un client jusqu'ÃƒÂ  **trois produits qu'il pourrait acquÃƒÂ©rir le mois suivant**. L'outil s'adresse, ÃƒÂ  titre de client reprÃƒÂ©sentatif, ÃƒÂ  un responsable du marketing et de la relation clientÃƒÂ¨le d'une banque de dÃƒÂ©tail. Il constitue une dÃƒÂ©monstration acadÃƒÂ©mique et non un outil officiel de Santander.
 
-L'application permet de consulter les produits dÃ©tenus, l'Ã©volution du portefeuille d'un client, les recommandations personnalisÃ©es, les prÃ©visions de juin 2016 et les indicateurs d'Ã©valuation du systÃ¨me.
+L'application permet de consulter les produits dÃƒÂ©tenus, l'ÃƒÂ©volution du portefeuille d'un client, les recommandations personnalisÃƒÂ©es, les prÃƒÂ©visions de juin 2016 et les indicateurs d'ÃƒÂ©valuation du systÃƒÂ¨me.
 
-## Lancer l'application â€” commande unique
+## Lancer l'application Ã¢â‚¬â€ commande unique
 
-**Depuis le rÃ©pertoire racine du projet**, aprÃ¨s avoir installÃ© les dÃ©pendances et vÃ©rifiÃ© la prÃ©sence des fichiers de donnÃ©es et des modÃ¨les :
+**Depuis le rÃƒÂ©pertoire racine du projet**, aprÃƒÂ¨s avoir installÃƒÂ© les dÃƒÂ©pendances et vÃƒÂ©rifiÃƒÂ© la prÃƒÂ©sence des fichiers de donnÃƒÂ©es et des modÃƒÂ¨les :
 
 ```powershell
 python -m streamlit run app.py
 ```
 
-Streamlit affiche normalement une adresse locale, gÃ©nÃ©ralement `http://localhost:8501`, Ã  ouvrir dans un navigateur. Pour arrÃªter le serveur, utiliser `Ctrl+C` dans le terminal.
+Streamlit affiche normalement une adresse locale, gÃƒÂ©nÃƒÂ©ralement `http://localhost:8501`, ÃƒÂ  ouvrir dans un navigateur. Pour arrÃƒÂªter le serveur, utiliser `Ctrl+C` dans le terminal.
 
-> **Important :** la commande ci-dessus lance l'application ; elle n'installe pas automatiquement Python, les bibliothÃ¨ques ni les modÃ¨les. La section suivante explique la prÃ©paration initiale.
+> **Important :** la commande ci-dessus lance l'application ; elle n'installe pas automatiquement Python, les bibliothÃƒÂ¨ques ni les modÃƒÂ¨les. La section suivante explique la prÃƒÂ©paration initiale.
 
-## PrÃ©requis et installation initiale (Windows PowerShell)
+## PrÃƒÂ©requis et installation initiale (Windows PowerShell)
 
 - Python et un environnement disposant de `streamlit`, `pandas`, `numpy`, `scikit-learn` et `joblib` ;
-- le fichier `app.py`, le jeu de donnÃ©es et les modÃ¨les entraÃ®nÃ©s aux emplacements indiquÃ©s ci-dessous ;
+- le fichier `app.py`, le jeu de donnÃƒÂ©es et les modÃƒÂ¨les entraÃƒÂ®nÃƒÂ©s aux emplacements indiquÃƒÂ©s ci-dessous ;
 - un terminal ouvert dans le dossier racine du projet.
 
-Exemple avec **Anaconda** et l'environnement utilisÃ© pendant le dÃ©veloppement :
+Exemple avec **Anaconda** et l'environnement utilisÃƒÂ© pendant le dÃƒÂ©veloppement :
 
 ```powershell
 conda activate ml-project
@@ -37,84 +37,84 @@ python -m pip install streamlit pandas numpy scikit-learn joblib
 python -m streamlit run app.py
 ```
 
-Le chemin `C:\Users\alapn\PythonProjects\BankReco` est propre Ã  l'ordinateur de dÃ©veloppement : **remplacez-le par le chemin rÃ©el du dossier tÃ©lÃ©chargÃ©**. Si les dÃ©pendances sont dÃ©jÃ  installÃ©es, seule la commande de lancement est nÃ©cessaire aprÃ¨s activation de l'environnement et positionnement dans le dossier du projet.
+Le chemin `C:\Users\alapn\PythonProjects\BankReco` est propre ÃƒÂ  l'ordinateur de dÃƒÂ©veloppement : **remplacez-le par le chemin rÃƒÂ©el du dossier tÃƒÂ©lÃƒÂ©chargÃƒÂ©**. Si les dÃƒÂ©pendances sont dÃƒÂ©jÃƒÂ  installÃƒÂ©es, seule la commande de lancement est nÃƒÂ©cessaire aprÃƒÂ¨s activation de l'environnement et positionnement dans le dossier du projet.
 
-**CompatibilitÃ© :** les modÃ¨les sÃ©rialisÃ©s avec `joblib` peuvent nÃ©cessiter des versions de `scikit-learn` compatibles avec celles utilisÃ©es pour leur entraÃ®nement. Pour une reproduction fiable, publier un fichier `requirements.txt` avec les versions testÃ©es ou un fichier d'environnement Conda.
+**CompatibilitÃƒÂ© :** les modÃƒÂ¨les sÃƒÂ©rialisÃƒÂ©s avec `joblib` peuvent nÃƒÂ©cessiter des versions de `scikit-learn` compatibles avec celles utilisÃƒÂ©es pour leur entraÃƒÂ®nement. Pour une reproduction fiable, publier un fichier `requirements.txt` avec les versions testÃƒÂ©es ou un fichier d'environnement Conda.
 
-## Organisation du dÃ©pÃ´t
+## Organisation du dÃƒÂ©pÃƒÂ´t
 
 ```text
 BankReco/
-â”œâ”€â”€ app.py
-â”œâ”€â”€ README.md
-â”œâ”€â”€ data/
-â”‚   â””â”€â”€ santander_echantillon.csv
-â”œâ”€â”€ modeles/
-â”‚   â”œâ”€â”€ modeles_bankreco.joblib
-â”‚   â”œâ”€â”€ variables_X.joblib
-â”‚   â””â”€â”€ noms_produits.joblib
-â”œâ”€â”€ resultats/
-â”‚   â””â”€â”€ predictions_juin_2016.csv
-â””â”€â”€ notebooks/
-    â””â”€â”€ 03_modelisation.ipynb
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ app.py
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ README.md
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ data/
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ santander_echantillon.csv
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ modeles/
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ modeles_bankreco.joblib
+Ã¢â€â€š   Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ variables_X.joblib
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ noms_produits.joblib
+Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ resultats/
+Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ predictions_juin_2016.csv
+Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ notebooks/
+    Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ 03_modelisation.ipynb
 ```
 
-Cette arborescence prÃ©sente les **fichiers nÃ©cessaires ou utilisÃ©s dans le dÃ©veloppement**. VÃ©rifiez que les noms correspondent aux fichiers rÃ©ellement prÃ©sents dans le dÃ©pÃ´t avant publication. Le notebook sert Ã  documenter les expÃ©rimentations ; l'application charge directement les fichiers `joblib` et le CSV.
+Cette arborescence prÃƒÂ©sente les **fichiers nÃƒÂ©cessaires ou utilisÃƒÂ©s dans le dÃƒÂ©veloppement**. VÃƒÂ©rifiez que les noms correspondent aux fichiers rÃƒÂ©ellement prÃƒÂ©sents dans le dÃƒÂ©pÃƒÂ´t avant publication. Le notebook sert ÃƒÂ  documenter les expÃƒÂ©rimentations ; l'application charge directement les fichiers `joblib` et le CSV.
 
-> **DonnÃ©es et taille du dÃ©pÃ´t :** le fichier `santander_echantillon.csv` reprÃ©sente environ 46 Mo dans l'environnement de dÃ©veloppement. VÃ©rifiez les rÃ¨gles de redistribution des donnÃ©es et la taille des fichiers avant leur publication. Si un fichier n'est pas inclus dans GitHub, indiquez prÃ©cisÃ©ment comment l'obtenir et oÃ¹ le placer ; sinon, la commande de lancement ne suffira pas Ã  reproduire l'application.
+> **DonnÃƒÂ©es et taille du dÃƒÂ©pÃƒÂ´t :** le fichier `santander_echantillon.csv` reprÃƒÂ©sente environ 46 Mo dans l'environnement de dÃƒÂ©veloppement. VÃƒÂ©rifiez les rÃƒÂ¨gles de redistribution des donnÃƒÂ©es et la taille des fichiers avant leur publication. Si un fichier n'est pas inclus dans GitHub, indiquez prÃƒÂ©cisÃƒÂ©ment comment l'obtenir et oÃƒÂ¹ le placer ; sinon, la commande de lancement ne suffira pas ÃƒÂ  reproduire l'application.
 
-## FonctionnalitÃ©s
+## FonctionnalitÃƒÂ©s
 
 ### 1. Recommandations
 
-- SÃ©lection d'un client et d'un mois d'observation ;
-- affichage du profil et des produits dÃ©jÃ  dÃ©tenus ;
-- gÃ©nÃ©ration d'un **Top 3** de produits admissibles avec probabilitÃ©s estimÃ©es ;
-- visualisation de l'Ã©volution mensuelle du nombre de produits ;
-- consultation des acquisitions et abandons observÃ©s et de la matrice de dÃ©tention des produits.
+- SÃƒÂ©lection d'un client et d'un mois d'observation ;
+- affichage du profil et des produits dÃƒÂ©jÃƒÂ  dÃƒÂ©tenus ;
+- gÃƒÂ©nÃƒÂ©ration d'un **Top 3** de produits admissibles avec probabilitÃƒÂ©s estimÃƒÂ©es ;
+- visualisation de l'ÃƒÂ©volution mensuelle du nombre de produits ;
+- consultation des acquisitions et abandons observÃƒÂ©s et de la matrice de dÃƒÂ©tention des produits.
 
-### 2. PrÃ©visions juin 2016
+### 2. PrÃƒÂ©visions juin 2016
 
-- Consultation des prÃ©visions Ã©tablies Ã  partir des profils de mai 2016 ;
-- sÃ©lection d'un client pour afficher ses recommandations et scores ;
-- visualisation de la rÃ©partition du nombre de recommandations ;
-- consultation et exportation des prÃ©visions en CSV.
+- Consultation des prÃƒÂ©visions ÃƒÂ©tablies ÃƒÂ  partir des profils de mai 2016 ;
+- sÃƒÂ©lection d'un client pour afficher ses recommandations et scores ;
+- visualisation de la rÃƒÂ©partition du nombre de recommandations ;
+- consultation et exportation des prÃƒÂ©visions en CSV.
 
-**Attention :** les acquisitions rÃ©elles de juin 2016 ne figurent pas dans l'Ã©chantillon utilisÃ© ; les prÃ©visions de juin ne peuvent donc pas Ãªtre Ã©valuÃ©es directement.
+**Attention :** les acquisitions rÃƒÂ©elles de juin 2016 ne figurent pas dans l'ÃƒÂ©chantillon utilisÃƒÂ© ; les prÃƒÂ©visions de juin ne peuvent donc pas ÃƒÂªtre ÃƒÂ©valuÃƒÂ©es directement.
 
 ### 3. Tableau de bord
 
-- PrÃ©sentation des performances mesurÃ©es sur avrilâ€“mai 2016 ;
-- comparaison Ã  une mÃ©thode de recommandation fondÃ©e sur la popularitÃ© ;
-- prÃ©sentation d'une analyse bootstrap exploratoire du gain de rappel.
+- PrÃƒÂ©sentation des performances mesurÃƒÂ©es sur avrilÃ¢â‚¬â€œmai 2016 ;
+- comparaison ÃƒÂ  une mÃƒÂ©thode de recommandation fondÃƒÂ©e sur la popularitÃƒÂ© ;
+- prÃƒÂ©sentation d'une analyse bootstrap exploratoire du gain de rappel.
 
-## DonnÃ©es et mÃ©thodes
+## DonnÃƒÂ©es et mÃƒÂ©thodes
 
-**Source :** jeu de donnÃ©es *Santander Product Recommendation* (Kaggle). L'Ã©chantillon de travail comporte **285 734 observations**, **20 000 clients**, **17 mois** (janvier 2015 Ã  mai 2016) et **24 indicateurs de produits bancaires**.
+**Source :** jeu de donnÃƒÂ©es *Santander Product Recommendation* (Kaggle). L'ÃƒÂ©chantillon de travail comporte **285 734 observations**, **20 000 clients**, **17 mois** (janvier 2015 ÃƒÂ  mai 2016) et **24 indicateurs de produits bancaires**.
 
-Sept produits sont modÃ©lisÃ©s : prÃ©lÃ¨vements automatiques, domiciliation de pension, domiciliation de salaire, compte courant, carte de crÃ©dit, compte de paie et E-account.
+Sept produits sont modÃƒÂ©lisÃƒÂ©s : prÃƒÂ©lÃƒÂ¨vements automatiques, domiciliation de pension, domiciliation de salaire, compte courant, carte de crÃƒÂ©dit, compte de paie et E-account.
 
-Le systÃ¨me utilise **sept modÃ¨les de rÃ©gression logistique calibrÃ©s**, un par produit. Les variables d'entrÃ©e comprennent des caractÃ©ristiques client et l'Ã©tat de dÃ©tention des produits. Pour chaque client, le systÃ¨me exclut les produits dÃ©jÃ  dÃ©tenus ou de statut inconnu, puis classe les produits restants selon leur score d'acquisition estimÃ©.
+Le systÃƒÂ¨me utilise **sept modÃƒÂ¨les de rÃƒÂ©gression logistique calibrÃƒÂ©s**, un par produit. Les variables d'entrÃƒÂ©e comprennent des caractÃƒÂ©ristiques client et l'ÃƒÂ©tat de dÃƒÂ©tention des produits. Pour chaque client, le systÃƒÂ¨me exclut les produits dÃƒÂ©jÃƒÂ  dÃƒÂ©tenus ou de statut inconnu, puis classe les produits restants selon leur score d'acquisition estimÃƒÂ©.
 
-**DÃ©coupage temporel :** entraÃ®nement sur 2015, calibration sur janvierâ€“fÃ©vrier 2016, puis Ã©valuation sur les pÃ©riodes ultÃ©rieures. Les rÃ©sultats prÃ©sentÃ©s ci-dessous portent sur avrilâ€“mai 2016.
+**DÃƒÂ©coupage temporel :** entraÃƒÂ®nement sur 2015, calibration sur janvierÃ¢â‚¬â€œfÃƒÂ©vrier 2016, puis ÃƒÂ©valuation sur les pÃƒÂ©riodes ultÃƒÂ©rieures. Les rÃƒÂ©sultats prÃƒÂ©sentÃƒÂ©s ci-dessous portent sur avrilÃ¢â‚¬â€œmai 2016.
 
-## RÃ©sultats expÃ©rimentaux
+## RÃƒÂ©sultats expÃƒÂ©rimentaux
 
-| Indicateur | BankReco | PopularitÃ© |
+| Indicateur | BankReco | PopularitÃƒÂ© |
 |---|---:|---:|
-| PrÃ©cision globale@3 | 1,115 % | 0,987 % |
+| PrÃƒÂ©cision globale@3 | 1,115 % | 0,987 % |
 | Rappel global@3 | 90,50 % | 80,14 % |
 | Hit Rate@3 | 95,29 % | 85,16 % |
 
-L'Ã©valuation porte sur **38 701 observations client-mois**, **19 411 clients distincts** et **1 410 acquisitions Ã©valuables**. Le systÃ¨me a produit **114 445 recommandations**, dont **1 276 correspondances avec des acquisitions**.
+L'ÃƒÂ©valuation porte sur **38 701 observations client-mois**, **19 411 clients distincts** et **1 410 acquisitions ÃƒÂ©valuables**. Le systÃƒÂ¨me a produit **114 445 recommandations**, dont **1 276 correspondances avec des acquisitions**.
 
-Le gain observÃ© de rappel global@3 par rapport Ã  la popularitÃ© est d'environ **10,35 points de pourcentage**. Un bootstrap exploratoire de 2 000 rÃ©Ã©chantillonnages a produit un intervalle de confiance Ã  95 % de **[8,459 ; 12,343] points**.
+Le gain observÃƒÂ© de rappel global@3 par rapport ÃƒÂ  la popularitÃƒÂ© est d'environ **10,35 points de pourcentage**. Un bootstrap exploratoire de 2 000 rÃƒÂ©ÃƒÂ©chantillonnages a produit un intervalle de confiance ÃƒÂ  95 % de **[8,459 ; 12,343] points**.
 
-La prÃ©cision reste faible : il faut donc Ã©viter de prÃ©senter chaque recommandation comme une acquisition probable ou certaine.
+La prÃƒÂ©cision reste faible : il faut donc ÃƒÂ©viter de prÃƒÂ©senter chaque recommandation comme une acquisition probable ou certaine.
 
-## PrÃ©visions pour juin 2016
+## PrÃƒÂ©visions pour juin 2016
 
-Ã€ partir des profils de mai 2016, l'application dispose de **57 591 recommandations** pour **19 447 clients** :
+Ãƒâ‚¬ partir des profils de mai 2016, l'application dispose de **57 591 recommandations** pour **19 447 clients** :
 
 | Recommandations par client | Nombre de clients |
 |---|---:|
@@ -123,33 +123,33 @@ La prÃ©cision reste faible : il faut donc Ã©viter de prÃ©senter chaque rec
 | 2 | 350 |
 | 3 | 18 909 |
 
-Les scores enregistrÃ©s dans le fichier CSV sont des probabilitÃ©s sur l'Ã©chelle **0 Ã  1** ; ils sont multipliÃ©s par 100 pour un affichage en pourcentage.
+Les scores enregistrÃƒÂ©s dans le fichier CSV sont des probabilitÃƒÂ©s sur l'ÃƒÂ©chelle **0 ÃƒÂ  1** ; ils sont multipliÃƒÂ©s par 100 pour un affichage en pourcentage.
 
-## VÃ©rification rapide aprÃ¨s lancement
+## VÃƒÂ©rification rapide aprÃƒÂ¨s lancement
 
-1. Ouvrir la page **Recommandations**, choisir un client et un mois, puis cliquer sur **GÃ©nÃ©rer les recommandations**.
-2. VÃ©rifier que les produits dÃ©jÃ  dÃ©tenus ne sont pas recommandÃ©s et que trois produits au maximum sont affichÃ©s.
-3. Ouvrir **PrÃ©visions juin 2016**, sÃ©lectionner un client et vÃ©rifier l'affichage des recommandations.
-4. Ouvrir **Tableau de bord** et vÃ©rifier la prÃ©sence des indicateurs d'Ã©valuation.
+1. Ouvrir la page **Recommandations**, choisir un client et un mois, puis cliquer sur **GÃƒÂ©nÃƒÂ©rer les recommandations**.
+2. VÃƒÂ©rifier que les produits dÃƒÂ©jÃƒÂ  dÃƒÂ©tenus ne sont pas recommandÃƒÂ©s et que trois produits au maximum sont affichÃƒÂ©s.
+3. Ouvrir **PrÃƒÂ©visions juin 2016**, sÃƒÂ©lectionner un client et vÃƒÂ©rifier l'affichage des recommandations.
+4. Ouvrir **Tableau de bord** et vÃƒÂ©rifier la prÃƒÂ©sence des indicateurs d'ÃƒÂ©valuation.
 
-Si l'application ne dÃ©marre pas, vÃ©rifier le rÃ©pertoire courant, les bibliothÃ¨ques installÃ©es et la prÃ©sence des fichiers mentionnÃ©s dans l'arborescence.
+Si l'application ne dÃƒÂ©marre pas, vÃƒÂ©rifier le rÃƒÂ©pertoire courant, les bibliothÃƒÂ¨ques installÃƒÂ©es et la prÃƒÂ©sence des fichiers mentionnÃƒÂ©s dans l'arborescence.
 
 ## Limites
 
-- Ã‰chantillon limitÃ© Ã  20 000 clients et Ã  sept produits modÃ©lisÃ©s ;
-- acquisitions rares et prÃ©cision@3 faible ;
-- performances historiques qui ne garantissent pas les rÃ©sultats futurs ;
-- prÃ©visions de juin 2016 non vÃ©rifiables sans donnÃ©es rÃ©elles correspondantes ;
-- outil acadÃ©mique ne tenant pas lieu de validation rÃ©glementaire ou commerciale.
+- Ãƒâ€°chantillon limitÃƒÂ© ÃƒÂ  20 000 clients et ÃƒÂ  sept produits modÃƒÂ©lisÃƒÂ©s ;
+- acquisitions rares et prÃƒÂ©cision@3 faible ;
+- performances historiques qui ne garantissent pas les rÃƒÂ©sultats futurs ;
+- prÃƒÂ©visions de juin 2016 non vÃƒÂ©rifiables sans donnÃƒÂ©es rÃƒÂ©elles correspondantes ;
+- outil acadÃƒÂ©mique ne tenant pas lieu de validation rÃƒÂ©glementaire ou commerciale.
 
-## RÃ©fÃ©rences
+## RÃƒÂ©fÃƒÂ©rences
 
-- [Kaggle â€” Santander Product Recommendation](https://www.kaggle.com/competitions/santander-product-recommendation)
+- [Kaggle Ã¢â‚¬â€ Santander Product Recommendation](https://www.kaggle.com/competitions/santander-product-recommendation)
 - [Documentation Streamlit](https://docs.streamlit.io/)
 - [Documentation scikit-learn](https://scikit-learn.org/stable/)
 
 ## Licence et publication
 
-Aucune licence logicielle n'est dÃ©finie ici. Ajouter une licence uniquement aprÃ¨s avoir choisi ses conditions et vÃ©rifiÃ© les droits de redistribution des fichiers inclus.
+Aucune licence logicielle n'est dÃƒÂ©finie ici. Ajouter une licence uniquement aprÃƒÂ¨s avoir choisi ses conditions et vÃƒÂ©rifiÃƒÂ© les droits de redistribution des fichiers inclus.
 
-**Projet pÃ©dagogique INF-5103 â€” UQO, automne 2026.**
+**Projet pÃƒÂ©dagogique INF-5103 Ã¢â‚¬â€ UQO, automne 2026.**
