@@ -36,3 +36,4 @@ app_sauvegarde*.py
 
 # Ancienne version du notebook de modélisation
 /notebooks/03_modelisation.ipynb
+/README_ancien.md
