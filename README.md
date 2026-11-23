@@ -2,7 +2,7 @@
 
 **Projet de session INF-5103 — Concepts statistiques pour la science des données**  
 **Université du Québec en Outaouais (UQO) — Automne 2026**  
-**Auteur :** Leonel
+**Auteur :** Leonel Alapnet Zébazé
 
 ## 1. Présentation
 
@@ -43,7 +43,7 @@ py -3.14 -m venv .venv
 .\.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-Ces commandes utilisent directement Python dans `.venv` : **Conda n'est pas nécessaire**. Pour utiliser ensuite la commande unique de la section 2, activer l'environnement dans un terminal autorisant l'activation :
+Ces commandes utilisent directement Python dans `.venv`. Pour utiliser ensuite la commande unique de la section 2, activer l'environnement dans un terminal autorisant l'activation :
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
@@ -77,12 +77,12 @@ BankReco/
 ├── requirements.txt
 ├── verification_bankreco.py
 ├── app.py
-├── 03_modelisation.ipynb             # Notebook principal à publier
+├── 03_modelisation.ipynb             # Notebook principal
 ├── notebooks/
 │   ├── 01_exploration_donnees.ipynb
 │   └── 02_preparation_donnees.ipynb
 ├── data/
-│   └── santander_echantillon.csv     # Requis ; pas encore inclus dans Git
+│   └── santander_echantillon.csv     
 ├── modeles/
 │   ├── modeles_bankreco.joblib
 │   ├── variables_X.joblib
@@ -91,12 +91,9 @@ BankReco/
     └── predictions_juin_2016.csv
 ```
 
-Les archives originales `train_ver2.csv.zip`, `test_ver2.csv.zip` et `sample_submission.csv.zip`, le dossier `.venv`, les caches et les copies de sauvegarde du programme sont exclus du dépôt.
-
 ### Important : disponibilité des données
 
-L'application lit obligatoirement `data/santander_echantillon.csv` (environ **46,41 Mo**). **Ce fichier n'est pas présent dans le premier commit Git** ; cloner le dépôt ne suffit donc pas, à ce stade, pour exécuter BankReco. Avant toute publication publique, il faut vérifier les droits de redistribution et l'absence d'informations confidentielles. Si la redistribution n'est pas permise, fournir une procédure reproductible de préparation de l'échantillon à partir de la source autorisée, avec les paramètres et éventuelles graines aléatoires utilisés. Ne pas inventer une URL de téléchargement de l'échantillon.
-
+L'application lit obligatoirement `data/santander_echantillon.csv` (environ **46,41 Mo**).
 Le script `verification_bankreco.py` vérifie la présence des fichiers et affiche les versions installées. **Il ne vérifie pas à lui seul les prédictions ni l'exactitude statistique des résultats.**
 
 ## 5. Données et méthode statistique
@@ -162,8 +159,8 @@ L'installation des dépendances, le chargement des **sept modèles** et le déma
 - [Streamlit — Documentation](https://docs.streamlit.io/)
 - [scikit-learn — Documentation](https://scikit-learn.org/stable/)
 
-## 11. Licence et publication
+## 11. Publication
 
-Aucune licence logicielle n'est encore définie. Le dépôt public et la redistribution des données devront respecter les droits applicables. **Lien GitHub : à compléter après création du dépôt.**
+ **Lien GitHub : (https://github.com/alapnetleonel/BankReco).**
 
 *Projet pédagogique INF-5103 — UQO, automne 2026.*

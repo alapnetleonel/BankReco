@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
+import altair as alt
 from pathlib import Path
 
 st.set_page_config(page_title='BankReco', page_icon='🏦', layout='wide')
@@ -165,12 +166,51 @@ if page == 'Recommandations':
     c1.metric('Mois observés', len(historique))
     c2.metric('Produits au dernier mois', int(historique['Nombre de produits'].iloc[-1]))
     c3.metric('Acquisitions observées', int(historique['Acquisitions'].sum()))
+    # Axe catégoriel : un repère pour CHAQUE mois observé, y compris janvier.
+    # Les libellés sont en français et l'ordre est strictement chronologique.
+    mois_courts = ['', 'janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin',
+                   'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.']
+    graphique = historique.copy()
+    graphique['Mois affiché'] = graphique['fecha_dato'].apply(
+        lambda d: f'{mois_courts[d.month]} {d.year}')
+    ordre_mois = graphique['Mois affiché'].tolist()
+    axe_mois = alt.X(
+        'Mois affiché:N',
+        sort=ordre_mois,
+        title='Mois',
+        axis=alt.Axis(labelAngle=-55, labelOverlap=False, labelLimit=100,
+                      labelFontSize=10, labelPadding=6))
+
     st.subheader('Évolution du nombre de produits détenus')
-    st.line_chart(historique.set_index('Mois')[['Nombre de produits']],
-                  x_label='Mois', y_label='Nombre de produits')
+    courbe = (alt.Chart(graphique)
+              .mark_line(point=alt.OverlayMarkDef(filled=True, size=65))
+              .encode(
+                  x=axe_mois,
+                  y=alt.Y('Nombre de produits:Q', title='Nombre de produits',
+                          scale=alt.Scale(zero=True)),
+                  tooltip=[alt.Tooltip('Mois:N', title='Mois complet'),
+                           alt.Tooltip('Nombre de produits:Q', title='Produits détenus')])
+              .properties(height=360))
+    st.altair_chart(courbe, use_container_width=True)
+    st.caption('Chaque point représente un mois observé, de janvier 2015 à mai 2016 '
+               'pour un client disposant de tout cet historique.')
+
     st.subheader('Acquisitions et abandons mensuels')
-    st.bar_chart(historique.set_index('Mois')[['Acquisitions', 'Abandons']],
-                 x_label='Mois', y_label='Nombre de produits')
+    mouvements_graphique = graphique.melt(
+        id_vars=['Mois affiché', 'Mois'],
+        value_vars=['Acquisitions', 'Abandons'],
+        var_name='Mouvement', value_name='Nombre')
+    barres = (alt.Chart(mouvements_graphique)
+              .mark_bar()
+              .encode(
+                  x=axe_mois,
+                  y=alt.Y('Nombre:Q', title='Nombre de produits'),
+                  xOffset=alt.XOffset('Mouvement:N', sort=['Acquisitions', 'Abandons']),
+                  color=alt.Color('Mouvement:N', title='Type de mouvement'),
+                  tooltip=[alt.Tooltip('Mois:N', title='Mois complet'),
+                           'Mouvement:N', alt.Tooltip('Nombre:Q', title='Nombre')])
+              .properties(height=310))
+    st.altair_chart(barres, use_container_width=True)
     st.caption('Les mouvements sont calculés uniquement entre deux mois consécutifs, sur les valeurs connues.')
     st.subheader('5. Quels produits ont été acquis ou abandonnés ?')
     mouvements_observes = details[(details['Acquisitions'].fillna(0) > 0) |
@@ -265,7 +305,7 @@ elif page == 'Tableau de bord':
     c1, c2, c3 = st.columns(3)
     c1.metric('Précision globale@3', '1,115 %')
     c2.metric('Rappel global@3', '90,50 %')
-    c3.metric('Hit Rate@3', '95,29 %')
+    c3.metric('Taux de réussite@3 (Hit Rate)', '95,29 %')
     st.subheader('Comparaison avec le modèle de popularité')
     comparaison = pd.DataFrame({
         'Indicateur': ['Précision globale@3', 'Rappel global@3', 'Hit Rate@3'],
@@ -274,10 +314,10 @@ elif page == 'Tableau de bord':
     })
     st.dataframe(comparaison, hide_index=True, width="stretch")
     st.bar_chart(comparaison.set_index('Indicateur'),
-                 x_label='Indicateur', y_label='Performance (%)')
+                 x_label='Indicateur', y_label='Performance (%)', stack=False)
     st.subheader('Validation statistique du gain de rappel')
     st.metric('Gain observé', '+10,355 points')
-    st.write('**Intervalle de confiance bootstrap à 95 % :** [8,459 ; 12,343] points.')
+    st.write('**Intervalle de confiance bootstrap à 95 % :** [8,459 ; 12,343] points de pourcentage.')
     st.info('L’intervalle est entièrement positif. Cette analyse reste exploratoire.')
     st.subheader('Données d’évaluation')
     c1, c2 = st.columns(2)
